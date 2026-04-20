@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Noto+Serif:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap&subset=vietnamese');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -24,8 +24,9 @@ body {
 }
 
 body {
-  color: #3D2914;
-  background: #FAF6F0;
+  color: #1a1a2e;
+  background: #ffffff;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -41,22 +42,61 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* JJ Fox Scroll Snap Carousel for Mobile */
+@layer utilities {
+  /* Hide scrollbar for carousel */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Horizontal scroll snap */
+  .snap-x {
+    scroll-snap-type: x mandatory;
+  }
+  
+  .snap-start {
+    scroll-snap-align: start;
+  }
+  
+  .snap-center {
+    scroll-snap-align: center;
+  }
+
+  /* Mobile product card sizing */
+  .product-card-mobile {
+    min-width: 80%;
+    max-width: 85%;
+  }
+
+  @media (min-width: 640px) {
+    .product-card-mobile {
+      min-width: auto;
+      max-width: none;
+    }
+  }
+}
+
+/* Custom scrollbar - minimalist */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4A3428;
-  border-radius: 4px;
+  background: #d1d5db;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2C1E16;
+  background: #9ca3af;
 }
 
 /* Focus visible styles */

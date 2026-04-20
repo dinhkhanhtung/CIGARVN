@@ -59,16 +59,17 @@ export default function Header() {
   const [cartCount] = useState(0);
 
   return (
-    <header className="page-header sticky top-0 z-50 bg-[#1a1a2e] text-white">
-      <div className="bg-[#d4af37]/10 border-b border-[#d4af37]/20">
+    <header className="page-header sticky top-0 z-50 bg-navy text-white">
+      {/* Top announcement bar - JJ Fox style */}
+      <div className="bg-gold/10 border-b border-gold/20">
         <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 text-xs">
           <div className="flex items-center gap-4">
-            <span className="text-[#d4af37] font-medium">Giao hàng toàn quốc</span>
+            <span className="text-gold font-medium">Giao hàng toàn quốc</span>
             <span className="hidden text-white/70 sm:inline">|</span>
             <span className="hidden text-white/80 sm:inline">Miễn phí với đơn từ 2 triệu</span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:0982581222" className="flex items-center gap-1.5 font-medium text-[#d4af37]">
+            <a href="tel:0982581222" className="flex items-center gap-1.5 font-medium text-gold hover:text-gold-light transition-colors">
               <Phone size={12} />
               <span>0982.581.222</span>
             </a>
@@ -76,12 +77,14 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Main header */}
       <div className="border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="flex h-20 items-center justify-between">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 sm:h-20 items-center justify-between">
+            {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="text-2xl font-bold tracking-tight">
-                <span className="text-[#d4af37]">CIGAR</span>
+              <div className="text-xl sm:text-2xl font-bold tracking-tight font-serif">
+                <span className="text-gold">CIGAR</span>
                 <span className="text-white ml-1">VN</span>
               </div>
             </Link>
@@ -99,11 +102,11 @@ export default function Header() {
                       href={item.href}
                       className={cn(
                         'flex items-center gap-1 px-4 py-2 text-sm font-medium transition-all',
-                        activeDropdown === item.label ? 'text-[#d4af37]' : 'text-white/90'
+                        activeDropdown === item.label ? 'text-gold' : 'text-white/90'
                       )}
                     >
                       {item.label}
-                      {item.children && <ChevronDown size={14} className={cn('transition-transform', activeDropdown === item.label && 'rotate-180')} />}
+                      {item.children && <ChevronDown size={14} className={cn('transition-transform duration-200', activeDropdown === item.label && 'rotate-180')} />}
                     </Link>
 
                     <AnimatePresence>
@@ -118,7 +121,7 @@ export default function Header() {
                             <Link
                               key={child.label}
                               href={child.href}
-                              className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#1a1a2e]"
+                              className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-navy"
                             >
                               {child.label}
                             </Link>
@@ -132,17 +135,23 @@ export default function Header() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <button className="hidden sm:flex h-10 w-10 items-center justify-center hover:text-[#d4af37]">
+              {/* Desktop Actions */}
+              <button className="hidden sm:flex h-10 w-10 items-center justify-center hover:text-gold transition-colors">
                 <Search size={20} />
               </button>
-              <Link href="/customer/account" className="hidden sm:flex h-10 w-10 items-center justify-center hover:text-[#d4af37]">
+              <Link href="/customer/account" className="hidden sm:flex h-10 w-10 items-center justify-center hover:text-gold transition-colors">
                 <User size={20} />
               </Link>
-              <Link href="/gio-hang" className="relative flex h-10 w-10 items-center justify-center hover:text-[#d4af37]">
+              <Link href="/gio-hang" className="relative flex h-10 w-10 items-center justify-center hover:text-gold transition-colors">
                 <ShoppingBag size={20} />
-                {cartCount > 0 && <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#d4af37] text-xs font-bold text-[#1a1a2e]">{cartCount}</span>}
+                {cartCount > 0 && <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gold text-xs font-bold text-navy">{cartCount}</span>}
               </Link>
-              <button className="flex h-10 w-10 items-center justify-center lg:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {/* Mobile Menu Button */}
+              <button 
+                className="flex h-10 w-10 items-center justify-center lg:hidden hover:text-gold transition-colors" 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? 'Đóng menu' : 'Mở menu'}
+              >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
@@ -154,28 +163,28 @@ export default function Header() {
         {isMobileMenuOpen && (
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-40 bg-black/50 lg:hidden" onClick={() => setIsMobileMenuOpen(false)} />
-            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25, stiffness: 200 }} className="fixed right-0 top-0 z-50 h-full w-[80%] max-w-sm bg-[#1a1a2e] shadow-2xl lg:hidden">
+            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25, stiffness: 200 }} className="fixed right-0 top-0 z-50 h-full w-[80%] max-w-sm bg-navy shadow-2xl lg:hidden">
               <nav className="px-4 py-6">
                 <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
-                  <div className="text-xl font-bold"><span className="text-[#d4af37]">CIGAR</span><span className="text-white ml-1">VN</span></div>
-                  <button onClick={() => setIsMobileMenuOpen(false)} className="flex h-10 w-10 items-center justify-center hover:text-[#d4af37]"><X size={24} /></button>
+                  <div className="text-xl font-bold font-serif"><span className="text-gold">CIGAR</span><span className="text-white ml-1">VN</span></div>
+                  <button onClick={() => setIsMobileMenuOpen(false)} className="flex h-10 w-10 items-center justify-center hover:text-gold transition-colors"><X size={24} /></button>
                 </div>
                 <ul className="space-y-1">
                   {navItems.map((item) => (
                     <li key={item.label}>
                       {item.children ? (
                         <details className="group">
-                          <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-white/90 hover:text-[#d4af37]">{item.label}<ChevronDown size={16} className="transition-transform group-open:rotate-180" /></summary>
-                          <ul className="mt-1 space-y-1 border-l-2 border-[#d4af37]/30 pl-4">
+                          <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-white/90 hover:text-gold transition-colors">{item.label}<ChevronDown size={16} className="transition-transform group-open:rotate-180" /></summary>
+                          <ul className="mt-1 space-y-1 border-l-2 border-gold/30 pl-4">
                             {item.children.map((child) => (
                               <li key={child.label}>
-                                <Link href={child.href} className="block px-4 py-2 text-sm text-white/70 hover:text-[#d4af37]" onClick={() => setIsMobileMenuOpen(false)}>{child.label}</Link>
+                                <Link href={child.href} className="block px-4 py-2 text-sm text-white/70 hover:text-gold transition-colors" onClick={() => setIsMobileMenuOpen(false)}>{child.label}</Link>
                               </li>
                             ))}
                           </ul>
                         </details>
                       ) : (
-                        <Link href={item.href} className="block px-4 py-3 text-sm font-medium text-white/90 hover:text-[#d4af37]" onClick={() => setIsMobileMenuOpen(false)}>{item.label}</Link>
+                        <Link href={item.href} className="block px-4 py-3 text-sm font-medium text-white/90 hover:text-gold transition-colors" onClick={() => setIsMobileMenuOpen(false)}>{item.label}</Link>
                       )}
                     </li>
                   ))}
