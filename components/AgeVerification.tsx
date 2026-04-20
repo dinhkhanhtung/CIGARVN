@@ -35,88 +35,59 @@ export default function AgeVerification() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md px-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm px-4"
         >
           <motion.div
-            initial={{ scale: 0.95, opacity: 0, y: 20 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: 20 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="w-full max-w-lg overflow-hidden rounded-lg bg-white shadow-2xl"
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-full max-w-md overflow-hidden rounded-lg bg-white shadow-2xl"
           >
-            {/* Header with gradient background */}
-            <div className="bg-gradient-to-br from-primary to-primary-dark px-6 py-8 text-center sm:px-8 sm:py-10">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.5, type: 'spring' }}
-                className="mb-4 flex justify-center"
-              >
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
-                  <svg className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="px-8 py-10 text-center">
+              {/* Logo */}
+              <div className="mb-6 font-serif text-3xl font-bold">
+                <span className="text-gold">CIGAR</span>
+                <span className="ml-1 text-navy">VN</span>
+              </div>
+
+              {/* Icon */}
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-navy/10">
+                  <svg className="h-8 w-8 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-              </motion.div>
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                className="font-serif text-2xl font-bold text-white sm:text-3xl"
-              >
-                Chào mừng
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-                className="mt-2 text-sm text-white/90 sm:text-base"
-              >
-                Nhà cung cấp xì gà cao cấp hàng đầu Việt Nam
-              </motion.p>
-            </div>
+              </div>
 
-            {/* Content */}
-            <div className="px-6 py-8 sm:px-8 sm:py-10">
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
-                className="mb-6 text-center text-sm leading-relaxed text-gray-600 sm:text-base"
-              >
+              {/* Content */}
+              <h2 className="mb-3 font-serif text-2xl font-bold text-navy">
+                Xác nhận độ tuổi
+              </h2>
+              <p className="mb-8 text-sm leading-relaxed text-gray-600">
                 Trang web này chứa sản phẩm dành cho người trên 18 tuổi.<br />
                 Vui lòng xác nhận bạn đủ 18 tuổi để tiếp tục.
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.4 }}
-                className="space-y-3"
-              >
+              {/* Buttons */}
+              <div className="space-y-3">
                 <button
                   onClick={handleVerify}
-                  className="w-full rounded-lg bg-gradient-to-r from-primary to-primary-dark px-6 py-4 text-sm font-semibold text-white shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] sm:py-4 sm:text-base"
+                  className="w-full rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-dark"
                 >
                   TÔI ĐÃ TRÊN 18 TUỔI - NHẬP TRANG
                 </button>
-
                 <button
                   onClick={handleReject}
-                  className="w-full rounded-lg border-2 border-gray-200 px-6 py-4 text-sm font-medium text-gray-600 transition-all hover:border-gray-300 hover:bg-gray-50 active:scale-[0.98] sm:py-4 sm:text-base"
+                  className="w-full rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
                 >
                   Tôi chưa đủ 18 tuổi
                 </button>
-              </motion.div>
+              </div>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.4 }}
-                className="mt-6 text-center text-xs text-gray-400 sm:text-sm"
-              >
-                Bằng việc tiếp tục, bạn đồng ý với các điều khoản sử dụng của chúng tôi
-              </motion.p>
+              <p className="mt-6 text-xs text-gray-400">
+                Bằng việc tiếp tục, bạn đồng ý với các điều khoản sử dụng
+              </p>
             </div>
           </motion.div>
         </motion.div>
