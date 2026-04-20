@@ -9,22 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Vintage Cigar Color Palette
+        primary: {
+          DEFAULT: '#4A3428', // Nâu sẫm vintage
+          light: '#6B4A3A',
+          dark: '#2C1E16',
+        },
+        accent: {
+          DEFAULT: '#C9A961', // Vàng đồng cổ điển
+          light: '#E8D4A8',
+          dark: '#A68B4B',
+        },
+        earth: {
+          DEFAULT: '#8B6914', // Nâu đất
+          light: '#A67C52',
+          dark: '#5C4510',
+        },
+        cream: '#FAF6F0', // Kem ấm
+        tobacco: '#D4C5B5', // Màu thuốc lá
+        'warm-gray': '#E8E2D9',
+        // Keep old aliases for compatibility
         navy: {
-          DEFAULT: '#28337e',
-          light: '#3a4791',
-          dark: '#1e275f',
+          DEFAULT: '#4A3428',
+          light: '#6B4A3A',
+          dark: '#2C1E16',
         },
         gold: {
-          DEFAULT: '#d4a853',
-          light: '#e8c87a',
-          dark: '#b8923d',
+          DEFAULT: '#C9A961',
+          light: '#E8D4A8',
+          dark: '#A68B4B',
         },
-        porcelain: '#f8f7f5',
-        'warm-gray': '#e8e6e3',
+        porcelain: '#FAF6F0',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'Crimson Text', 'Georgia', 'serif'],
-        sans: ['Inter', 'Montserrat', 'system-ui', 'sans-serif'],
+        // Fonts with excellent Vietnamese support
+        serif: ['Noto Serif', 'Georgia', 'serif'],
+        sans: ['Be Vietnam Pro', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Playfair Display', 'Noto Serif', 'serif'],
       },
       borderRadius: {
         'sm': '8px',
