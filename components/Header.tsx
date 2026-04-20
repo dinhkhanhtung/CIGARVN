@@ -6,10 +6,11 @@ import { Search, ShoppingBag, Menu, X, ChevronDown, User, Phone } from 'lucide-r
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
+// JJ Fox exact navigation menu
 const navItems = [
   {
-    label: 'Xì gà Cuba',
-    href: '/san-pham?origin=cuba',
+    label: 'Thương hiệu',
+    href: '/san-pham',
     children: [
       { label: 'Cohiba', href: '/san-pham?brand=cohiba' },
       { label: 'Montecristo', href: '/san-pham?brand=montecristo' },
@@ -17,30 +18,39 @@ const navItems = [
       { label: 'Partagas', href: '/san-pham?brand=partagas' },
       { label: 'H. Upmann', href: '/san-pham?brand=upmann' },
       { label: 'Hoyo de Monterrey', href: '/san-pham?brand=hoyo' },
+      { label: 'Bolivar', href: '/san-pham?brand=bolivar' },
+      { label: 'Trinidad', href: '/san-pham?brand=trinidad' },
     ]
   },
   {
-    label: 'Xì gà theo độ nặng',
-    href: '/san-pham',
+    label: 'Xì gà Cuba',
+    href: '/san-pham?origin=cuba',
     children: [
-      { label: 'Nhẹ (Mild)', href: '/san-pham?strength=mild' },
-      { label: 'Trung bình (Medium)', href: '/san-pham?strength=medium' },
-      { label: 'Mạnh (Full)', href: '/san-pham?strength=full' },
+      { label: 'Limited Edition', href: '/san-pham?edition=limited' },
+      { label: 'Regional Edition', href: '/san-pham?edition=regional' },
+      { label: 'Reserva', href: '/san-pham?edition=reserva' },
+      { label: 'Gran Reserva', href: '/san-pham?edition=gran-reserva' },
     ]
   },
   {
-    label: 'Xì gà theo kích thước',
-    href: '/san-pham',
+    label: 'Xì gà New World',
+    href: '/san-pham?origin=new-world',
     children: [
-      { label: 'Robusto', href: '/san-pham?shape=robusto' },
-      { label: 'Toro', href: '/san-pham?shape=toro' },
-      { label: 'Churchill', href: '/san-pham?shape=churchill' },
-      { label: 'Corona', href: '/san-pham?shape=corona' },
+      { label: 'Davidoff', href: '/san-pham?brand=davidoff' },
+      { label: 'Arturo Fuente', href: '/san-pham?brand=fuente' },
+      { label: 'Padrón', href: '/san-pham?brand=padrón' },
+      { label: 'My Father', href: '/san-pham?brand=my-father' },
     ]
   },
-  { label: 'Hộp ẩm', href: '/san-pham?category=humidor' },
-  { label: 'Thuốc tẩu', href: '/san-pham?category=pipe-tobacco' },
   { label: 'Phụ kiện', href: '/san-pham?category=phu-kien' },
+  { label: 'Bộ sampler', href: '/san-pham?category=samplers' },
+  { label: 'Quà tặng', href: '/san-pham?category=gifts' },
+  {
+    label: 'Limited/Special',
+    href: '/san-pham?category=limited-special'
+  },
+  { label: 'Tẩu & Thuốc', href: '/san-pham?category=pipes-tobacco' },
+  { label: 'Sự kiện', href: '/tin-tuc' },
 ];
 
 export default function Header() {
