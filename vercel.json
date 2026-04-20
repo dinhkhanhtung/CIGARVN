@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/san-pham/detail", "destination": "/san-pham/detail.html" },
+    { "source": "/san-pham/detail/:path*", "destination": "/san-pham/detail.html" }
+  ]
+}
