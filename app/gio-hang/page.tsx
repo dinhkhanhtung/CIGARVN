@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight, Truck } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 interface CartItem {
   id: string;
@@ -21,7 +22,7 @@ const initialCartItems: CartItem[] = [
     name: 'Cohiba Behike 52',
     brand: 'Cohiba',
     price: 2850000,
-    image: '/images/product-img7.jpeg',
+    image: JJFOX_IMAGES.productSample,
     quantity: 2,
   },
   {
@@ -29,7 +30,7 @@ const initialCartItems: CartItem[] = [
     name: 'Montecristo No. 2',
     brand: 'Montecristo',
     price: 1850000,
-    image: '/images/bestsellers_desktop.png',
+    image: JJFOX_IMAGES.bestsellers,
     quantity: 1,
   },
 ];

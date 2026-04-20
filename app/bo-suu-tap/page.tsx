@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Gift, Sparkles } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 const collections = [
   {
     id: '1',
     name: 'Bộ sưu tập Cuba Classic',
     description: 'Tuyển chọn những điếu xì gà Cuba kinh điển nhất từ Cohiba, Montecristo, Romeo y Julieta.',
-    image: '/images/25-jjfox_new_arrivals_banner__v2.jpg',
+    image: JJFOX_IMAGES.newArrivals,
     price: 5500000,
     items: 6,
     tag: 'Bán chạy',
@@ -19,7 +20,7 @@ const collections = [
     id: '2',
     name: ' sampler New World',
     description: 'Khám phá hương vị từ Dominican, Nicaragua và Honduras với bộ sampler đa dạng.',
-    image: '/images/limited_editions_desktop.png',
+    image: JJFOX_IMAGES.limitedEditions,
     price: 3200000,
     items: 5,
     tag: 'Mới',
@@ -28,7 +29,7 @@ const collections = [
     id: '3',
     name: 'Phụ kiện Cao Cấp',
     description: 'Bộ sưu tập bật lửa S.T. Dupont, dao cắt Colibri và gạt tàn Elie Bleu.',
-    image: '/images/25-jjfox_cigar_accessories_banner_2.jpg',
+    image: JJFOX_IMAGES.accessories,
     price: 8500000,
     items: 4,
     tag: 'Limited',
@@ -37,7 +38,7 @@ const collections = [
     id: '4',
     name: 'Humidor Starter Pack',
     description: 'Trọn bộ cho người mới: hộp ẩm, ẩm kế, bình ẩm và xì gà mẫu.',
-    image: '/images/25-jjfox_new_arrivals_banner__v2.jpg',
+    image: JJFOX_IMAGES.newArrivals,
     price: 4500000,
     items: 8,
     tag: 'Starter',

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowRight, Flame, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 interface Product {
   id: string;
@@ -25,7 +26,7 @@ const products: Product[] = [
     brand: 'Cohiba',
     price: 2850000,
     originalPrice: 3200000,
-    image: '/images/product-img7.jpeg',
+    image: JJFOX_IMAGES.productSample,
     strength: 'full',
     origin: 'Cuba',
   },
@@ -34,7 +35,7 @@ const products: Product[] = [
     name: 'Montecristo No. 2',
     brand: 'Montecristo',
     price: 1850000,
-    image: '/images/bestsellers_desktop.png',
+    image: JJFOX_IMAGES.bestsellers,
     strength: 'medium',
     origin: 'Cuba',
   },
@@ -43,7 +44,7 @@ const products: Product[] = [
     name: 'Romeo y Julieta Churchill',
     brand: 'Romeo y Julieta',
     price: 1650000,
-    image: '/images/limited_editions_desktop.png',
+    image: JJFOX_IMAGES.limitedEditions,
     strength: 'medium',
     origin: 'Cuba',
   },
@@ -53,7 +54,7 @@ const products: Product[] = [
     brand: 'Fox House',
     price: 1250000,
     originalPrice: 1450000,
-    image: '/images/fox_house_blend.png',
+    image: JJFOX_IMAGES.foxHouseBlend,
     strength: 'medium',
     origin: 'Cuba',
   },
@@ -62,7 +63,7 @@ const products: Product[] = [
     name: 'S.T. Dupont Lighter Gold',
     brand: 'S.T. Dupont',
     price: 8500000,
-    image: '/images/Lighter_Gold_Diamonds_3Q.jpg',
+    image: JJFOX_IMAGES.lighterGold,
     strength: 'mild',
     origin: 'Phụ kiện',
   },
@@ -71,7 +72,7 @@ const products: Product[] = [
     name: 'Limited Edition 2024',
     brand: 'Cohiba',
     price: 3250000,
-    image: '/images/banner-new.jpg',
+    image: JJFOX_IMAGES.newArrivals,
     strength: 'full',
     origin: 'Cuba',
   },

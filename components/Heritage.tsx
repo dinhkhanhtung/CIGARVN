@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Award, Users, Crown, History } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 export default function Heritage() {
   return (
@@ -74,7 +75,7 @@ export default function Heritage() {
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
               <Image
-                src="/images/lounge_jjfox.jpg"
+                src={JJFOX_IMAGES.hero}
                 alt="Cigar Lounge Heritage"
                 fill
                 className="object-cover"

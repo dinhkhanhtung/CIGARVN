@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Wine, Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 export default function SamplingLounge() {
   return (
@@ -19,7 +20,7 @@ export default function SamplingLounge() {
             className="relative aspect-[16/10] overflow-hidden rounded-lg shadow-2xl lg:order-1"
           >
             <Image
-              src="/images/jjfox_events_banner__v3.jpg"
+              src={JJFOX_IMAGES.events}
               alt="Sampling Lounge"
               fill
               className="object-cover"

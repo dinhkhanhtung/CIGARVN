@@ -21,6 +21,7 @@ import {
   Flame,
   ChevronLeft,
 } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 interface Product {
   id: string;
@@ -47,7 +48,7 @@ const products: Product[] = [
     brand: 'Cohiba',
     price: 2850000,
     originalPrice: 3200000,
-    image: '/images/product-img7.jpeg',
+    image: JJFOX_IMAGES.productSample,
     strength: 'full',
     origin: 'Cuba',
     length: '144mm',
@@ -64,7 +65,7 @@ const products: Product[] = [
     name: 'Montecristo No. 2',
     brand: 'Montecristo',
     price: 1850000,
-    image: '/images/bestsellers_desktop.png',
+    image: JJFOX_IMAGES.bestsellers,
     strength: 'medium',
     origin: 'Cuba',
     length: '156mm',

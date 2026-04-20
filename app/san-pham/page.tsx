@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Filter, X, ChevronDown, Flame, SlidersHorizontal } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 interface Product {
   id: string;
@@ -27,7 +28,7 @@ const products: Product[] = [
     brand: 'Cohiba',
     price: 2850000,
     originalPrice: 3200000,
-    image: '/images/product-img7.jpeg',
+    image: JJFOX_IMAGES.productSample,
     strength: 'full',
     origin: 'Cuba',
     length: '144mm',
@@ -39,7 +40,7 @@ const products: Product[] = [
     name: 'Montecristo No. 2',
     brand: 'Montecristo',
     price: 1850000,
-    image: '/images/bestsellers_desktop.png',
+    image: JJFOX_IMAGES.bestsellers,
     strength: 'medium',
     origin: 'Cuba',
     length: '156mm',
@@ -51,7 +52,7 @@ const products: Product[] = [
     name: 'Romeo y Julieta Churchill',
     brand: 'Romeo y Julieta',
     price: 1650000,
-    image: '/images/limited_editions_desktop.png',
+    image: JJFOX_IMAGES.limitedEditions,
     strength: 'medium',
     origin: 'Cuba',
     length: '178mm',
@@ -64,7 +65,7 @@ const products: Product[] = [
     brand: 'Davidoff',
     price: 1250000,
     originalPrice: 1450000,
-    image: '/images/our_heritage_desktop.png',
+    image: JJFOX_IMAGES.heritage,
     strength: 'mild',
     origin: 'Dominican',
     length: '140mm',
@@ -76,7 +77,7 @@ const products: Product[] = [
     name: 'Partagas Serie D No. 4',
     brand: 'Partagas',
     price: 1750000,
-    image: '/images/bestsellers_desktop.png',
+    image: JJFOX_IMAGES.bestsellers,
     strength: 'full',
     origin: 'Cuba',
     length: '124mm',
@@ -89,7 +90,7 @@ const products: Product[] = [
     brand: 'H. Upmann',
     price: 2250000,
     originalPrice: 2500000,
-    image: '/images/product-img7.jpeg',
+    image: JJFOX_IMAGES.productSample,
     strength: 'medium',
     origin: 'Cuba',
     length: '160mm',

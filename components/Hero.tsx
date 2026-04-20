@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 export default function Hero() {
   return (
@@ -11,7 +12,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/lounge_jjfox.jpg"
+          src={JJFOX_IMAGES.hero}
           alt="Cigar luxury background"
           fill
           priority

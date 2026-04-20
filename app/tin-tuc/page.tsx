@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, ArrowRight, Clock, User } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 const news = [
   {
     id: '1',
     title: 'Cách bảo quản xì gà đúng cách trong hộp ẩm',
     excerpt: 'Hướng dẫn chi tiết về nhiệt độ, độ ẩm và cách lưu trữ xì gà để giữ nguyên hương vị trong thời gian dài.',
-    image: '/images/blog_image.jpg',
+    image: JJFOX_IMAGES.blog,
     date: '15/04/2024',
     author: 'Admin',
     readTime: '5 phút',
@@ -20,7 +21,7 @@ const news = [
     id: '2',
     title: 'Top 5 xì gà Cuba cho người mới bắt đầu',
     excerpt: 'Những điếu xì gà dễ hút, hương vị nhẹ nhàng phù hợp cho người mới bắt đầu khám phá thế giới xì gà.',
-    image: '/images/phillip_expert_1_b_w_resized.jpg',
+    image: JJFOX_IMAGES.expert,
     date: '10/04/2024',
     author: 'Chuyên gia',
     readTime: '8 phút',
@@ -30,7 +31,7 @@ const news = [
     id: '3',
     title: 'Lịch sử Cohiba - Thương hiệu xì gà huyền thoại',
     excerpt: 'Từ những điếu xì gà dành riêng cho Fidel Castro đến biểu tượng xa xỉ toàn cầu.',
-    image: '/images/bestsellers_desktop.png',
+    image: JJFOX_IMAGES.bestsellers,
     date: '05/04/2024',
     author: 'Admin',
     readTime: '10 phút',
@@ -40,7 +41,7 @@ const news = [
     id: '4',
     title: 'Sự kiện thưởng thức Cohiba tháng 4/2024',
     excerpt: 'Tham gia buổi tối thưởng thức xì gà Cohiba cùng chuyên gia và rượu whisky cao cấp.',
-    image: '/images/event_image_1_.jpg',
+    image: JJFOX_IMAGES.event1,
     date: '01/04/2024',
     author: 'Events Team',
     readTime: '3 phút',
@@ -50,7 +51,7 @@ const news = [
     id: '5',
     title: 'S.T. Dupont - Nghệ thuật bật lửa cao cấp',
     excerpt: 'Khám phá quy trình chế tác thủ công tỉ mỉ của những chiếc bật lửa xa xỉ bậc nhất thế giới.',
-    image: '/images/Lighter_Gold_Diamonds_3Q.jpg',
+    image: JJFOX_IMAGES.lighterGold,
     date: '28/03/2024',
     author: 'Admin',
     readTime: '6 phút',
@@ -60,7 +61,7 @@ const news = [
     id: '6',
     title: 'Fox House Blend - Hương vị độc quyền',
     excerpt: 'Bộ sưu tập xì gà độc quyền được pha trộn đặc biệt dành cho khách hàng thân thiết.',
-    image: '/images/fox_house_blend.png',
+    image: JJFOX_IMAGES.foxHouseBlend,
     date: '20/03/2024',
     author: 'Master Blender',
     readTime: '4 phút',

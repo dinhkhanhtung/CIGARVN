@@ -4,24 +4,25 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BookOpen, Calendar, Instagram, ArrowRight, MapPin } from 'lucide-react';
+import { JJFOX_IMAGES } from '@/lib/images';
 
 const blogPosts = [
   {
     title: 'Cách bảo quản xì gà đúng cách',
     excerpt: 'Hướng dẫn chi tiết về nhiệt độ, độ ẩm và cách lưu trữ xì gà để giữ nguyên hương vị.',
-    image: '/images/blog_image.jpg',
+    image: JJFOX_IMAGES.blog,
     date: '15/04/2024',
   },
   {
     title: 'Top 5 xì gà Cuba cho người mới',
     excerpt: 'Những điếu xì gà dễ hút, hương vị nhẹ nhàng phù hợp cho người mới bắt đầu.',
-    image: '/images/phillip_expert_1_b_w_resized.jpg',
+    image: JJFOX_IMAGES.expert,
     date: '10/04/2024',
   },
   {
     title: 'S.T. Dupont - Biểu tượng sang trọng',
     excerpt: 'Khám phá lịch sử và nghệ thuật chế tác bật lửa cao cấp từ Pháp.',
-    image: '/images/Lighter_Gold_Diamonds_3Q.jpg',
+    image: JJFOX_IMAGES.lighterGold,
     date: '05/04/2024',
   },
 ];
@@ -31,19 +32,19 @@ const events = [
     title: 'Sự kiện thưởng thức Cohiba',
     date: '25/04/2024',
     location: 'Quận 1, TP.HCM',
-    image: '/images/event_image_1_.jpg',
+    image: JJFOX_IMAGES.event1,
   },
   {
     title: 'Workshop cắt xì gà chuyên nghiệp',
     date: '02/05/2024',
     location: 'Quận 3, TP.HCM',
-    image: '/images/the_white_spot_banner_1_.jpg',
+    image: JJFOX_IMAGES.whiteSpot,
   },
   {
     title: 'Gala Dinner & Cigar Night',
     date: '15/05/2024',
     location: 'Quận 2, TP.HCM',
-    image: '/images/jjfox_events_banner__v3.jpg',
+    image: JJFOX_IMAGES.events,
   },
 ];
 
