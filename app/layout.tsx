@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ZaloButton from '@/components/ZaloButton';
 import AgeVerification from '@/components/AgeVerification';
 
 export const metadata: Metadata = {
@@ -26,7 +25,6 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
-        <ZaloButton />
       </body>
     </html>
   );
