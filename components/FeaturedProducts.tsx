@@ -169,37 +169,37 @@ export default function FeaturedProducts() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <Link href={`/san-pham/${product.id}`} className="group block">
-                <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 group-hover:shadow-xl sm:rounded-sm">
+                <div className="relative overflow-hidden rounded-lg bg-white transition-all duration-300 group-hover:shadow-2xl">
                   {product.originalPrice && (
-                    <div className="absolute left-2 top-2 z-10 rounded-full bg-red-500 px-2.5 py-1 text-xs font-semibold text-white shadow-lg">
+                    <div className="absolute left-2 top-2 z-10 rounded bg-red-600 px-2.5 py-1 text-xs font-bold text-white shadow-lg">
                       -{Math.round((1 - product.price / product.originalPrice) * 100)}%
                     </div>
                   )}
-                  <div className="aspect-[4/5] relative overflow-hidden bg-gray-100">
+                  <div className="aspect-[4/5] relative overflow-hidden bg-gray-50">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
-                  <div className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-xs shadow-md backdrop-blur-sm">
+                  <div className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold shadow-lg">
                     <Flame size={12} className={strengthLabels[product.strength].color.replace('bg-', 'text-')} />
-                    <span className="font-medium text-gray-700">
+                    <span className="text-gray-800">
                       {strengthLabels[product.strength].label}
                     </span>
                   </div>
                 </div>
                 <div className="mt-4">
-                  <div className="mb-1.5 text-xs font-medium uppercase tracking-wider text-gray-500">
+                  <div className="mb-1.5 text-xs font-bold uppercase tracking-wider text-gray-500">
                     {product.brand}
                   </div>
-                  <h3 className="mb-2 font-serif text-base font-semibold text-primary transition-colors group-hover:text-accent sm:text-navy">
+                  <h3 className="mb-2 font-serif text-base font-bold text-navy transition-colors group-hover:text-gold lg:text-lg">
                     {product.name}
                   </h3>
-                  <div className="flex items-center gap-2">
-                    <span className="font-serif text-base font-bold text-primary sm:text-navy">
+                  <div className="flex items-center gap-3">
+                    <span className="font-serif text-lg font-bold text-navy">
                       {formatPrice(product.price)}
                     </span>
                     {product.originalPrice && (
