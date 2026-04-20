@@ -1,23 +1,17 @@
-import Hero from '@/components/Hero';
-import FeaturedProducts from '@/components/FeaturedProducts';
-import Categories from '@/components/Categories';
-import WhyChooseUs from '@/components/WhyChooseUs';
-import Heritage from '@/components/Heritage';
-import SamplingLounge from '@/components/SamplingLounge';
-import BlogEvents from '@/components/BlogEvents';
-import Newsletter from '@/components/Newsletter';
+import HeroBanner from '@/components/HeroBanner';
+import OurFavourites from '@/components/OurFavourites';
+import BlogEventsSocial from '@/components/BlogEventsSocial';
+import ContentSection from '@/components/ContentSection';
+import TrustpilotWidget from '@/components/TrustpilotWidget';
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <Categories />
-      <FeaturedProducts />
-      <WhyChooseUs />
-      <Heritage />
-      <SamplingLounge />
-      <BlogEvents />
-      <Newsletter />
-    </>
+    <div className="page-content">
+      <HeroBanner />
+      <TrustpilotWidget />
+      <OurFavourites />
+      <BlogEventsSocial />
+      <ContentSection />
+    </div>
   );
 }

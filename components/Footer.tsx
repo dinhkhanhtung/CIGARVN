@@ -1,208 +1,134 @@
 'use client';
 
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Clock, Instagram, Facebook, Youtube } from 'lucide-react';
+import { useState } from 'react';
 
-const footerLinks = {
-  shop: [
-    { label: 'Xì gà Cuba', href: '/xuat-xu/cuba' },
-    { label: 'Xì gà Dominican', href: '/xuat-xu/dominican' },
-    { label: 'Phụ kiện', href: '/phu-kien' },
-    { label: 'Bộ sưu tập', href: '/bo-suu-tap' },
-    { label: 'Sản phẩm mới', href: '/san-pham?sort=newest' },
-  ],
-  help: [
-    { label: 'Hướng dẫn mua hàng', href: '/huong-dan' },
-    { label: 'Vận chuyển & Giao hàng', href: '/van-chuyen' },
-    { label: 'Đổi trả & Hoàn tiền', href: '/doi-tra' },
-    { label: 'Câu hỏi thường gặp', href: '/faq' },
-    { label: 'Liên hệ', href: '/lien-he' },
-  ],
-  about: [
-    { label: 'Về chúng tôi', href: '/ve-chung-toi' },
-    { label: 'Sampling Lounge', href: '/sampling-lounge' },
-    { label: 'Sự kiện', href: '/events' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Tuyển dụng', href: '/tuyen-dung' },
-  ],
-  legal: [
-    { label: 'Điều khoản sử dụng', href: '/dieu-khoan' },
-    { label: 'Chính sách bảo mật', href: '/bao-mat' },
-    { label: 'Xác nhận độ tuổi', href: '/tuoi' },
-    { label: 'Cookie Policy', href: '/cookie' },
-  ],
+const footerColumns = {
+  help: {
+    title: 'HELP',
+    links: [
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Delivery Information', href: '/delivery' },
+      { label: 'Returns Policy', href: '/returns' },
+      { label: 'Cigar Storage', href: '/storage' },
+      { label: 'Age Verification', href: '/age-verification' },
+    ]
+  },
+  about: {
+    title: 'ABOUT US',
+    links: [
+      { label: 'Our Heritage', href: '/heritage' },
+      { label: 'Sampling Lounge', href: '/sampling-lounge' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Events', href: '/events' },
+      { label: 'Careers', href: '/careers' },
+    ]
+  },
+  legal: {
+    title: 'LEGAL',
+    links: [
+      { label: 'Terms & Conditions', href: '/terms' },
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Cookie Policy', href: '/cookies' },
+    ]
+  },
+  store: {
+    title: 'STORE FINDER',
+    content: (
+      <div className="text-sm text-white/70">
+        <p className="mb-2">19 St James's Street</p>
+        <p className="mb-2">London, SW1A 1ES</p>
+        <p className="mb-2">Tel: 0982.581.222</p>
+        <p>Mon-Sat: 10am - 6pm</p>
+      </div>
+    )
+  }
 };
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+
   return (
-    <footer className="bg-navy text-white">
-      {/* Main Footer */}
-      <div className="mx-auto max-w-7xl px-4 py-16 lg:py-20">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="mb-6 block">
-              <div className="font-serif text-3xl font-bold">
-                <span className="text-gold">CIGAR</span>
-                <span className="ml-1 text-white">VN</span>
-              </div>
-            </Link>
-            <p className="mb-6 text-sm leading-relaxed text-white/80">
-              Hơn 20 năm kinh nghiệm trong thế giới xì gà. 
-              Chuyên cung cấp xì gà chính hãng từ Cuba, Dominican, Nicaragua.
-            </p>
-            <div className="flex gap-3">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-gold hover:scale-110"
-              >
-                <Instagram size={18} />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-gold hover:scale-110"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-gold hover:scale-110"
-              >
-                <Youtube size={18} />
-              </a>
-            </div>
-          </div>
-
-          {/* Shop Links */}
-          <div>
-            <h4 className="mb-6 font-serif text-sm font-bold uppercase tracking-wider text-gold">Mua sắm</h4>
-            <ul className="space-y-3">
-              {footerLinks.shop.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/80 transition-colors hover:text-gold"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Help Links */}
-          <div>
-            <h4 className="mb-6 font-serif text-sm font-bold uppercase tracking-wider text-gold">Hỗ trợ</h4>
-            <ul className="space-y-3">
-              {footerLinks.help.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/80 transition-colors hover:text-gold"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* About Links */}
-          <div>
-            <h4 className="mb-6 font-serif text-sm font-bold uppercase tracking-wider text-gold">Về chúng tôi</h4>
-            <ul className="space-y-3">
-              {footerLinks.about.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/80 transition-colors hover:text-gold"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info & Newsletter */}
-          <div>
-            <h4 className="mb-6 font-serif text-sm font-bold uppercase tracking-wider text-gold">Liên hệ</h4>
-            <ul className="mb-6 space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin size={16} className="mt-0.5 flex-shrink-0 text-gold" />
-                <span className="text-sm text-white/80">
-                  Cu Van, Thái Nguyên
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={16} className="text-gold" />
-                <a href="tel:0982581222" className="text-sm text-white/80 hover:text-gold font-semibold">
-                  0982.581.222
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={16} className="text-gold" />
-                <a href="mailto:info@cigarvn.com" className="text-sm text-white/80 hover:text-gold">
-                  info@cigarvn.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock size={16} className="mt-0.5 flex-shrink-0 text-gold" />
-                <span className="text-sm text-white/80">
-                  Thứ 2 - Thứ 7: 9:00 - 21:00
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Newsletter */}
-      <div className="border-t border-white/10 bg-navy-dark">
-        <div className="mx-auto max-w-7xl px-4 py-10">
-          <div className="text-center">
-            <h3 className="mb-3 font-serif text-xl font-bold text-white">Đăng ký nhận tin</h3>
-            <p className="mb-6 text-sm text-white/70">
-              Nhận thông tin về sản phẩm mới, sự kiện và ưu đãi đặc biệt
-            </p>
-            <div className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                placeholder="Email của bạn"
-                className="flex-1 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-white/50 outline-none transition-colors focus:border-gold"
-              />
-              <button className="rounded-lg bg-gold px-6 py-3 text-sm font-bold uppercase tracking-wide text-navy transition-all hover:bg-gold-light hover:shadow-lg">
-                Đăng ký
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
+    <footer className="page-footer bg-[#1a1a2e] text-white">
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-6">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-xs text-white/50">
-              © 2024 Cigar VN. Tất cả quyền được bảo lưu.
-            </p>
-            <div className="flex gap-6">
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-xs text-white/50 transition-colors hover:text-gold"
-                >
-                  {link.label}
-                </Link>
-              ))}
+        <div className="mx-auto max-w-7xl px-4 py-12">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+            {/* HELP */}
+            <div>
+              <h3 className="mb-4 text-sm font-bold text-[#d4af37]">{footerColumns.help.title}</h3>
+              <ul className="space-y-2">
+                {footerColumns.help.links.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* ABOUT US */}
+            <div>
+              <h3 className="mb-4 text-sm font-bold text-[#d4af37]">{footerColumns.about.title}</h3>
+              <ul className="space-y-2">
+                {footerColumns.about.links.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* LEGAL */}
+            <div>
+              <h3 className="mb-4 text-sm font-bold text-[#d4af37]">{footerColumns.legal.title}</h3>
+              <ul className="space-y-2">
+                {footerColumns.legal.links.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* STORE FINDER */}
+            <div>
+              <h3 className="mb-4 text-sm font-bold text-[#d4af37]">{footerColumns.store.title}</h3>
+              {footerColumns.store.content}
+            </div>
+
+            {/* NEWSLETTER */}
+            <div>
+              <h3 className="mb-4 text-sm font-bold text-[#d4af37]">NEWSLETTER</h3>
+              <p className="mb-3 text-sm text-white/70">Sign up for exclusive offers and updates</p>
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter email"
+                  className="flex-1 bg-white/10 border border-white/20 px-3 py-2 text-sm text-white placeholder:text-white/50"
+                />
+                <button className="bg-[#d4af37] px-4 py-2 text-sm font-medium text-[#1a1a2e] hover:bg-[#e5c158]">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
+            <div className="text-xl font-bold">
+              <span className="text-[#d4af37]">CIGAR</span>
+              <span className="text-white ml-1">VN</span>
+            </div>
+            <p className="text-xs text-white/50">
+              © 2024 Cigar VN. All rights reserved. Please smoke responsibly.
+            </p>
           </div>
         </div>
       </div>

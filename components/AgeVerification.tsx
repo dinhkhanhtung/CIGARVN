@@ -35,58 +35,49 @@ export default function AgeVerification() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm px-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 px-4"
         >
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
+            exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="w-full max-w-md overflow-hidden rounded-lg bg-white shadow-2xl"
+            className="w-full max-w-md bg-white"
           >
-            <div className="px-8 py-10 text-center">
-              {/* Logo */}
-              <div className="mb-6 font-serif text-3xl font-bold">
-                <span className="text-gold">CIGAR</span>
-                <span className="ml-1 text-navy">VN</span>
+            <div className="bg-[#d4af37] px-6 py-4">
+              <h1 className="text-lg font-bold text-[#1a1a2e] uppercase tracking-wide">Age Verification</h1>
+            </div>
+            
+            <div className="px-8 py-8 text-center">
+              <div className="mb-6 text-3xl font-bold">
+                <span className="text-[#d4af37]">CIGAR</span>
+                <span className="text-[#1a1a2e] ml-1">VN</span>
               </div>
 
-              {/* Icon */}
-              <div className="mb-6 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-navy/10">
-                  <svg className="h-8 w-8 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Content */}
-              <h2 className="mb-3 font-serif text-2xl font-bold text-navy">
-                Xác nhận độ tuổi
-              </h2>
-              <p className="mb-8 text-sm leading-relaxed text-gray-600">
-                Trang web này chứa sản phẩm dành cho người trên 18 tuổi.<br />
-                Vui lòng xác nhận bạn đủ 18 tuổi để tiếp tục.
+              <p className="mb-8 text-gray-600 leading-relaxed">
+                This website contains products only suitable for those 18 years or older.
+                <br /><br />
+                Click Enter only if you are at least 18 years of age.
               </p>
 
-              {/* Buttons */}
               <div className="space-y-3">
                 <button
                   onClick={handleVerify}
-                  className="w-full rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-dark"
+                  id="enter"
+                  className="w-full bg-[#d4af37] px-6 py-4 text-sm font-bold uppercase text-[#1a1a2e] transition-colors hover:bg-[#e5c158]"
                 >
-                  TÔI ĐÃ TRÊN 18 TUỔI - NHẬP TRANG
+                  Enter
                 </button>
                 <button
                   onClick={handleReject}
-                  className="w-full rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
+                  className="w-full border border-gray-300 px-6 py-3 text-sm text-gray-600 transition-colors hover:bg-gray-50"
                 >
-                  Tôi chưa đủ 18 tuổi
+                  Exit
                 </button>
               </div>
 
               <p className="mt-6 text-xs text-gray-400">
-                Bằng việc tiếp tục, bạn đồng ý với các điều khoản sử dụng
+                By entering you accept our Terms and Conditions
               </p>
             </div>
           </motion.div>

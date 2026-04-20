@@ -17,11 +17,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className="min-h-screen bg-cream">
+      <body className="min-h-screen bg-white">
         <AgeVerification />
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <div className="page-wrapper">
+          <Header />
+          <main id="maincontent" className="page-main">
+            {children}
+          </main>
+          <Footer />
+        </div>
         <ZaloButton />
       </body>
     </html>
