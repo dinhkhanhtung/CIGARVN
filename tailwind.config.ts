@@ -9,21 +9,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // JJ Fox Exact Colors
+        // JJ Fox Brand Colors (trích xuất từ file HTML gốc)
+        brand: {
+          red: '#8B0000',      // Đỏ đô thương hiệu (burgundy)
+          gold: '#d19000',     // Vàng kim chính (#d19000 từ CSS gốc)
+          goldLight: '#d4af37',
+          goldDark: '#b8860b',
+        },
         navy: {
-          DEFAULT: '#1a1a2e', // Deep navy blue
+          DEFAULT: '#1a1a2e', // Deep navy blue cho header
           light: '#16213e',
           dark: '#0f0f1a',
         },
         gold: {
-          DEFAULT: '#c9a227', // Gold accent
+          DEFAULT: '#d19000', // Gold chính thức của JJ Fox
           light: '#d4af37',
           dark: '#b8860b',
         },
-        white: {
-          DEFAULT: '#ffffff',
-          off: '#f8f8f8',
-        },
+        // Grayscale chuẩn
         gray: {
           50: '#f9fafb',
           100: '#f3f4f6',
@@ -36,16 +39,26 @@ const config: Config = {
           800: '#1f2937',
           900: '#111827',
         },
-        // Vintage cigar colors
+        // Utility colors
         'cream': '#faf9f5',
-        'tobacco': '#d4c4b0',
-        'brown': '#8b7355',
+        'porcelain': '#f5f5f0',
       },
       fontFamily: {
-        // JJ Fox Typography
+        // JJ Fox Typography: Serif cho tiêu đề, Sans-serif cho nội dung
         serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
         sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
         display: ['Playfair Display', 'Georgia', 'serif'],
+        body: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+      },
+      spacing: {
+        // JJ Fox spacing scale
+        'xxs': '0.25rem',  // 4px
+        'xs': '0.5rem',    // 8px
+        'sm': '0.75rem',   // 12px
+        'md': '1rem',      // 16px
+        'lg': '1.5rem',    // 24px
+        'xl': '2rem',      // 32px
+        '2xl': '3rem',     // 48px
       },
       borderRadius: {
         'sm': '8px',
