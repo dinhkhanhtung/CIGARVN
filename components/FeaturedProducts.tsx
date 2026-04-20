@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Flame } from 'lucide-react';
+import { ArrowRight, Flame, ChevronLeft, ChevronRight } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface Product {
   id: string;
@@ -90,8 +92,38 @@ function formatPrice(price: number): string {
 }
 
 export default function FeaturedProducts() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'start',
+    loop: false,
+    skipSnaps: false,
+    dragFree: true,
+  });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
+
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-12 lg:py-16">
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex items-end justify-between">
           <motion.div
@@ -126,7 +158,8 @@ export default function FeaturedProducts() {
           </motion.div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Desktop Grid */}
+        <div className="hidden mt-10 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
@@ -137,14 +170,11 @@ export default function FeaturedProducts() {
             >
               <Link href={`/san-pham/${product.id}`} className="group block">
                 <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 group-hover:shadow-xl sm:rounded-sm">
-                  {/* Sale badge */}
                   {product.originalPrice && (
                     <div className="absolute left-2 top-2 z-10 rounded-full bg-red-500 px-2.5 py-1 text-xs font-semibold text-white shadow-lg">
                       -{Math.round((1 - product.price / product.originalPrice) * 100)}%
                     </div>
                   )}
-
-                  {/* Image */}
                   <div className="aspect-[4/5] relative overflow-hidden bg-gray-100">
                     <Image
                       src={product.image}
@@ -152,11 +182,8 @@ export default function FeaturedProducts() {
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    {/* Quick actions overlay */}
                     <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
                   </div>
-
-                  {/* Strength indicator */}
                   <div className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-xs shadow-md backdrop-blur-sm">
                     <Flame size={12} className={strengthLabels[product.strength].color.replace('bg-', 'text-')} />
                     <span className="font-medium text-gray-700">
@@ -164,8 +191,6 @@ export default function FeaturedProducts() {
                     </span>
                   </div>
                 </div>
-
-                {/* Info */}
                 <div className="mt-4">
                   <div className="mb-1.5 text-xs font-medium uppercase tracking-wider text-gray-500">
                     {product.brand}
@@ -187,6 +212,87 @@ export default function FeaturedProducts() {
               </Link>
             </motion.div>
           ))}
+        </div>
+
+        {/* Mobile Horizontal Carousel */}
+        <div className="mt-8 lg:hidden">
+          <div className="relative">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-4">
+                {products.map((product, index) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className="flex-[0_0_75%] min-w-0 sm:flex-[0_0_50%]"
+                  >
+                    <Link href={`/san-pham/${product.id}`} className="group block">
+                      <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 group-hover:shadow-xl">
+                        {product.originalPrice && (
+                          <div className="absolute left-2 top-2 z-10 rounded-full bg-red-500 px-2.5 py-1 text-xs font-semibold text-white shadow-lg">
+                            -{Math.round((1 - product.price / product.originalPrice) * 100)}%
+                          </div>
+                        )}
+                        <div className="aspect-[4/5] relative overflow-hidden bg-gray-100">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+                        </div>
+                        <div className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-xs shadow-md backdrop-blur-sm">
+                          <Flame size={12} className={strengthLabels[product.strength].color.replace('bg-', 'text-')} />
+                          <span className="font-medium text-gray-700">
+                            {strengthLabels[product.strength].label}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="mt-3">
+                        <div className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
+                          {product.brand}
+                        </div>
+                        <h3 className="mb-2 font-serif text-sm font-semibold text-primary transition-colors group-hover:text-accent">
+                          {product.name}
+                        </h3>
+                        <div className="flex items-center gap-2">
+                          <span className="font-serif text-sm font-bold text-primary">
+                            {formatPrice(product.price)}
+                          </span>
+                          {product.originalPrice && (
+                            <span className="text-xs text-gray-400 line-through">
+                              {formatPrice(product.originalPrice)}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation arrows */}
+            {canScrollPrev && (
+              <button
+                onClick={scrollPrev}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50"
+              >
+                <ChevronLeft size={20} className="text-navy" />
+              </button>
+            )}
+            {canScrollNext && (
+              <button
+                onClick={scrollNext}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50"
+              >
+                <ChevronRight size={20} className="text-navy" />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Mobile view all button */}
