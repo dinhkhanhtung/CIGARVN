@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   ChevronRight,
   Minus,
@@ -38,6 +39,43 @@ interface Product {
   inStock: boolean;
 }
 
+const products: Product[] = [
+  {
+    id: '1',
+    name: 'Cohiba Behike 52',
+    brand: 'Cohiba',
+    price: 2850000,
+    originalPrice: 3200000,
+    image: '/images/product-img7.jpeg',
+    strength: 'full',
+    origin: 'Cuba',
+    length: '144mm',
+    ringGauge: '52',
+    shape: 'Robusto',
+    smokingTime: '60-90 phút',
+    tastingNotes: ['Cacao', 'Cà phê', 'Tiêu cay', 'Gỗ sồi', 'Đất'],
+    description:
+      'Cohiba Behike 52 là dòng xì gà cao cấp nhất của Cohiba. Với kích thước Robusto hoàn hảo, điếu xì gà mang đến trải nghiệm phức tạp và cân bằng.',
+    inStock: true,
+  },
+  {
+    id: '2',
+    name: 'Montecristo No. 2',
+    brand: 'Montecristo',
+    price: 1850000,
+    image: '/images/bestsellers_desktop.png',
+    strength: 'medium',
+    origin: 'Cuba',
+    length: '156mm',
+    ringGauge: '52',
+    shape: 'Pyramid',
+    smokingTime: '45-60 phút',
+    tastingNotes: ['Hạnh nhân', 'Vani', 'Gỗ tuyết tùng', 'Cacao'],
+    description: 'Montecristo No. 2 là điếu xì gà Pyramid huyền thoại.',
+    inStock: true,
+  },
+];
+
 const strengthLabels = {
   mild: { label: 'Nhẹ', color: 'bg-green-500', bgColor: 'bg-green-50', textColor: 'text-green-700' },
   medium: { label: 'Trung bình', color: 'bg-yellow-500', bgColor: 'bg-yellow-50', textColor: 'text-yellow-700' },
@@ -52,12 +90,12 @@ function formatPrice(price: number): string {
   }).format(price);
 }
 
-interface ProductDetailClientProps {
-  product: Product;
-  relatedProducts: Product[];
-}
-
-export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
+export default function ProductDetailClient() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id') || '1';
+  const product = products.find((p) => p.id === id) || products[0];
+  const relatedProducts = products.filter((p) => p.id !== product.id);
+  
   const [quantity, setQuantity] = useState(1);
   const [isWishlist, setIsWishlist] = useState(false);
 
