@@ -19,7 +19,7 @@ export default function SamplingLounge() {
             className="relative aspect-[16/10] overflow-hidden rounded-lg shadow-2xl lg:order-1"
           >
             <Image
-              src="/images/banner-events.jpg"
+              src="/images/jjfox_events_banner__v3.jpg"
               alt="Sampling Lounge"
               fill
               className="object-cover"
