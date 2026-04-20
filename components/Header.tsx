@@ -1,0 +1,259 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown, Search, ShoppingBag, Phone } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+interface MenuItem {
+  label: string;
+  href: string;
+  children?: MenuItem[];
+}
+
+const menuItems: MenuItem[] = [
+  {
+    label: 'Thương hiệu',
+    href: '/san-pham',
+    children: [
+      { label: 'Cohiba', href: '/san-pham?brand=cohiba' },
+      { label: 'Montecristo', href: '/san-pham?brand=montecristo' },
+      { label: 'Romeo y Julieta', href: '/san-pham?brand=romeo' },
+      { label: 'Davidoff', href: '/san-pham?brand=davidoff' },
+      { label: 'Partagas', href: '/san-pham?brand=partagas' },
+      { label: 'H. Upmann', href: '/san-pham?brand=upmann' },
+    ],
+  },
+  {
+    label: 'Xuất xứ',
+    href: '/san-pham',
+    children: [
+      { label: 'Cuba', href: '/san-pham?origin=cuba' },
+      { label: 'Dominican', href: '/san-pham?origin=dominican' },
+      { label: 'Nicaragua', href: '/san-pham?origin=nicaragua' },
+      { label: 'Honduras', href: '/san-pham?origin=honduras' },
+    ],
+  },
+  {
+    label: 'Hình dáng',
+    href: '/san-pham',
+    children: [
+      { label: 'Robusto', href: '/san-pham?shape=robusto' },
+      { label: 'Toro', href: '/san-pham?shape=toro' },
+      { label: 'Churchill', href: '/san-pham?shape=churchill' },
+      { label: 'Corona', href: '/san-pham?shape=corona' },
+      { label: 'Pyramid', href: '/san-pham?shape=pyramid' },
+    ],
+  },
+  {
+    label: 'Phụ kiện',
+    href: '/san-pham?category=phu-kien',
+    children: [
+      { label: 'Bật lửa', href: '/san-pham?category=bat-lua' },
+      { label: 'Dao cắt', href: '/san-pham?category=dao-cat' },
+      { label: 'Gạt tàn', href: '/san-pham?category=gat-tan' },
+      { label: 'Ống đựng', href: '/san-pham?category=ong-dung' },
+      { label: 'Ẩm điếu', href: '/san-pham?category=am-dieu' },
+    ],
+  },
+  { label: 'Bộ sưu tập', href: '/bo-suu-tap' },
+  { label: 'Tin tức', href: '/tin-tuc' },
+];
+
+export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [cartCount] = useState(0);
+
+  return (
+    <header className="sticky top-0 z-50 bg-navy text-white">
+      {/* Top bar */}
+      <div className="border-b border-navy-light/30">
+        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 text-xs">
+          <div className="flex items-center gap-4">
+            <span className="text-gold-light">Giao hàng toàn quốc</span>
+            <span className="hidden text-white/60 sm:inline">|</span>
+            <span className="hidden text-white/80 sm:inline">Miễn phí với đơn từ 2 triệu</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="tel:0982581222"
+              className="flex items-center gap-1.5 text-gold transition-colors hover:text-gold-light"
+            >
+              <Phone size={12} />
+              <span>0982.581.222</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main header */}
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <div className="font-serif text-2xl font-bold tracking-tight">
+              <span className="text-gold">CIGAR</span>
+              <span className="text-white ml-1">VN</span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:block">
+            <ul className="flex items-center gap-1">
+              {menuItems.map((item) => (
+                <li
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => setActiveDropdown(item.label)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors',
+                      'hover:text-gold',
+                      activeDropdown === item.label ? 'text-gold' : 'text-white/90'
+                    )}
+                  >
+                    {item.label}
+                    {item.children && (
+                      <ChevronDown
+                        size={14}
+                        className={cn(
+                          'transition-transform duration-200',
+                          activeDropdown === item.label && 'rotate-180'
+                        )}
+                      />
+                    )}
+                  </Link>
+
+                  {/* Dropdown */}
+                  <AnimatePresence>
+                    {item.children && activeDropdown === item.label && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute left-0 top-full z-50 min-w-[200px] rounded-sm bg-white py-2 shadow-lg"
+                      >
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.label}
+                            href={child.href}
+                            className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-porcelain hover:text-navy"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            <button
+              className="flex h-10 w-10 items-center justify-center rounded-sm transition-colors hover:bg-navy-light"
+              aria-label="Tìm kiếm"
+            >
+              <Search size={20} />
+            </button>
+
+            <Link
+              href="/gio-hang"
+              className="relative flex h-10 w-10 items-center justify-center rounded-sm transition-colors hover:bg-navy-light"
+              aria-label="Giỏ hàng"
+            >
+              <ShoppingBag size={20} />
+              {cartCount > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gold text-xs font-semibold text-navy">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+
+            {/* Mobile menu button */}
+            <button
+              className="flex h-10 w-10 items-center justify-center rounded-sm transition-colors hover:bg-navy-light lg:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Đóng menu' : 'Mở menu'}
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden bg-navy-dark lg:hidden"
+          >
+            <nav className="mx-auto max-w-7xl px-4 py-4">
+              <ul className="space-y-1">
+                {menuItems.map((item) => (
+                  <li key={item.label}>
+                    {item.children ? (
+                      <details className="group">
+                        <summary className="flex cursor-pointer items-center justify-between py-3 text-sm font-medium text-white/90 hover:text-gold">
+                          {item.label}
+                          <ChevronDown
+                            size={16}
+                            className="transition-transform group-open:rotate-180"
+                          />
+                        </summary>
+                        <ul className="mt-1 space-y-1 border-l border-navy-light/50 pl-4">
+                          {item.children.map((child) => (
+                            <li key={child.label}>
+                              <Link
+                                href={child.href}
+                                className="block py-2 text-sm text-white/70 hover:text-gold"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="block py-3 text-sm font-medium text-white/90 hover:text-gold"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Mobile contact */}
+              <div className="mt-6 border-t border-navy-light/30 pt-4">
+                <a
+                  href="tel:0982581222"
+                  className="flex items-center gap-2 text-gold"
+                >
+                  <Phone size={16} />
+                  <span className="font-medium">0982.581.222</span>
+                </a>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
