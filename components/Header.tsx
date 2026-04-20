@@ -67,19 +67,20 @@ export default function Header() {
   const [cartCount] = useState(0);
 
   return (
-    <header className="sticky top-0 z-50 bg-navy text-white">
-      {/* Top bar */}
-      <div className="border-b border-navy-light/30">
+    <header className="sticky top-0 z-50 bg-navy text-white shadow-lg">
+      {/* Top announcement bar */}
+      <div className="bg-gold/10 border-b border-gold/20">
         <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 text-xs">
           <div className="flex items-center gap-4">
-            <span className="text-gold-light">Giao hàng toàn quốc</span>
-            <span className="hidden text-white/60 sm:inline">|</span>
+            <span className="text-gold font-medium">Giao hàng toàn quốc</span>
+            <span className="hidden text-white/70 sm:inline">|</span>
             <span className="hidden text-white/80 sm:inline">Miễn phí với đơn từ 2 triệu</span>
           </div>
           <div className="flex items-center gap-4">
+            <span className="text-white/60 hidden sm:inline">Hotline:</span>
             <a
               href="tel:0982581222"
-              className="flex items-center gap-1.5 text-gold transition-colors hover:text-gold-light"
+              className="flex items-center gap-1.5 font-medium text-gold transition-colors hover:text-gold-light"
             >
               <Phone size={12} />
               <span>0982.581.222</span>
@@ -90,10 +91,10 @@ export default function Header() {
 
       {/* Main header */}
       <div className="mx-auto max-w-7xl px-4">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="font-serif text-2xl font-bold tracking-tight">
+            <div className="font-serif text-3xl font-bold tracking-tight">
               <span className="text-gold">CIGAR</span>
               <span className="text-white ml-1">VN</span>
             </div>
@@ -101,7 +102,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:block">
-            <ul className="flex items-center gap-1">
+            <ul className="flex items-center gap-6">
               {menuItems.map((item) => (
                 <li
                   key={item.label}
@@ -112,7 +113,7 @@ export default function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      'flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors',
+                      'flex items-center gap-1 px-3 py-2 text-sm font-semibold tracking-wide uppercase transition-all duration-200',
                       'hover:text-gold',
                       activeDropdown === item.label ? 'text-gold' : 'text-white/90'
                     )}
@@ -120,7 +121,7 @@ export default function Header() {
                     {item.label}
                     {item.children && (
                       <ChevronDown
-                        size={14}
+                        size={12}
                         className={cn(
                           'transition-transform duration-200',
                           activeDropdown === item.label && 'rotate-180'
@@ -137,13 +138,13 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute left-0 top-full z-50 min-w-[200px] rounded-sm bg-white py-2 shadow-lg"
+                        className="absolute left-0 top-full z-50 min-w-[220px] rounded-lg bg-white py-3 shadow-2xl"
                       >
                         {item.children.map((child) => (
                           <Link
                             key={child.label}
                             href={child.href}
-                            className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-porcelain hover:text-navy"
+                            className="block px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-navy"
                           >
                             {child.label}
                           </Link>
@@ -157,22 +158,22 @@ export default function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
-              className="flex h-10 w-10 items-center justify-center rounded-sm transition-colors hover:bg-navy-light"
+              className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 hover:bg-white/10"
               aria-label="Tìm kiếm"
             >
-              <Search size={20} />
+              <Search size={18} />
             </button>
 
             <Link
               href="/gio-hang"
-              className="relative flex h-10 w-10 items-center justify-center rounded-sm transition-colors hover:bg-navy-light"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 hover:bg-white/10"
               aria-label="Giỏ hàng"
             >
-              <ShoppingBag size={20} />
+              <ShoppingBag size={18} />
               {cartCount > 0 && (
-                <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gold text-xs font-semibold text-navy">
+                <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gold text-xs font-bold text-navy shadow-lg">
                   {cartCount}
                 </span>
               )}
@@ -180,11 +181,11 @@ export default function Header() {
 
             {/* Mobile menu button */}
             <button
-              className="flex h-10 w-10 items-center justify-center rounded-sm transition-colors hover:bg-navy-light lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 hover:bg-white/10 lg:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? 'Đóng menu' : 'Mở menu'}
             >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
