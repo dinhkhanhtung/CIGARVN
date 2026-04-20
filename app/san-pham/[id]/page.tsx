@@ -1,3 +1,11 @@
+// Generate static paths for all products (must be before 'use client')
+export function generateStaticParams() {
+  return [
+    { id: '1' },
+    { id: '2' },
+  ];
+}
+
 'use client';
 
 import { useParams } from 'next/navigation';
