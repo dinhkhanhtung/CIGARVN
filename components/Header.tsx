@@ -190,35 +190,70 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden bg-navy-dark lg:hidden"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed right-0 top-0 z-50 h-full w-[80%] max-w-sm overflow-y-auto bg-gradient-to-b from-primary to-primary-dark shadow-2xl lg:hidden"
           >
-            <nav className="mx-auto max-w-7xl px-4 py-4">
+            <nav className="px-4 py-6">
+              {/* Close button */}
+              <div className="mb-6 flex items-center justify-between">
+                <div className="font-serif text-xl font-bold text-white">
+                  <span className="text-gold">CIGAR</span>
+                  <span className="text-white ml-1">VN</span>
+                </div>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                  aria-label="Đóng menu"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              {/* Menu items */}
               <ul className="space-y-1">
-                {menuItems.map((item) => (
-                  <li key={item.label}>
+                {menuItems.map((item, index) => (
+                  <motion.li
+                    key={item.label}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
                     {item.children ? (
                       <details className="group">
-                        <summary className="flex cursor-pointer items-center justify-between py-3 text-sm font-medium text-white/90 hover:text-gold">
+                        <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-gold">
                           {item.label}
                           <ChevronDown
                             size={16}
                             className="transition-transform group-open:rotate-180"
                           />
                         </summary>
-                        <ul className="mt-1 space-y-1 border-l border-navy-light/50 pl-4">
+                        <ul className="mt-1 space-y-1 border-l-2 border-white/20 pl-6">
                           {item.children.map((child) => (
                             <li key={child.label}>
                               <Link
                                 href={child.href}
-                                className="block py-2 text-sm text-white/70 hover:text-gold"
+                                className="block rounded-lg px-4 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-gold"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 {child.label}
@@ -230,26 +265,34 @@ export default function Header() {
                     ) : (
                       <Link
                         href={item.href}
-                        className="block py-3 text-sm font-medium text-white/90 hover:text-gold"
+                        className="block rounded-lg px-4 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-gold"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.label}
                       </Link>
                     )}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
 
               {/* Mobile contact */}
-              <div className="mt-6 border-t border-navy-light/30 pt-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-8 rounded-xl bg-white/10 p-4 backdrop-blur-sm"
+              >
+                <p className="mb-3 text-xs font-medium text-white/60 uppercase tracking-wider">
+                  Liên hệ ngay
+                </p>
                 <a
                   href="tel:0982581222"
-                  className="flex items-center gap-2 text-gold"
+                  className="flex items-center gap-3 rounded-lg bg-gold px-4 py-3 text-center font-semibold text-primary transition-colors hover:bg-gold-light"
                 >
-                  <Phone size={16} />
-                  <span className="font-medium">0982.581.222</span>
+                  <Phone size={18} />
+                  <span>0982.581.222</span>
                 </a>
-              </div>
+              </motion.div>
             </nav>
           </motion.div>
         )}

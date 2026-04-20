@@ -136,45 +136,49 @@ export default function FeaturedProducts() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <Link href={`/san-pham/${product.id}`} className="group block">
-                <div className="relative overflow-hidden rounded-sm bg-porcelain">
+                <div className="relative overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 group-hover:shadow-xl sm:rounded-sm">
                   {/* Sale badge */}
                   {product.originalPrice && (
-                    <div className="absolute left-3 top-3 z-10 rounded-sm bg-red-500 px-2 py-1 text-xs font-semibold text-white">
+                    <div className="absolute left-2 top-2 z-10 rounded-full bg-red-500 px-2.5 py-1 text-xs font-semibold text-white shadow-lg">
                       -{Math.round((1 - product.price / product.originalPrice) * 100)}%
                     </div>
                   )}
 
                   {/* Image */}
-                  <div className="aspect-[4/5] relative overflow-hidden">
+                  <div className="aspect-[4/5] relative overflow-hidden bg-gray-100">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
+                    {/* Quick actions overlay */}
+                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
                   </div>
 
                   {/* Strength indicator */}
-                  <div className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-xs">
+                  <div className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-xs shadow-md backdrop-blur-sm">
                     <Flame size={12} className={strengthLabels[product.strength].color.replace('bg-', 'text-')} />
-                    <span className="text-gray-700">
+                    <span className="font-medium text-gray-700">
                       {strengthLabels[product.strength].label}
                     </span>
                   </div>
                 </div>
 
                 {/* Info */}
-                <div className="mt-3">
-                  <div className="mb-1 text-xs text-gray-500">{product.brand}</div>
-                  <h3 className="mb-2 font-serif text-base font-medium text-navy transition-colors group-hover:text-gold">
+                <div className="mt-4">
+                  <div className="mb-1.5 text-xs font-medium uppercase tracking-wider text-gray-500">
+                    {product.brand}
+                  </div>
+                  <h3 className="mb-2 font-serif text-base font-semibold text-primary transition-colors group-hover:text-accent sm:text-navy">
                     {product.name}
                   </h3>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold text-navy">
+                    <span className="font-serif text-base font-bold text-primary sm:text-navy">
                       {formatPrice(product.price)}
                     </span>
                     {product.originalPrice && (
-                      <span className="text-xs text-gray-400 line-through">
+                      <span className="text-sm text-gray-400 line-through">
                         {formatPrice(product.originalPrice)}
                       </span>
                     )}
