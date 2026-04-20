@@ -223,7 +223,7 @@ export default function Header() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 z-50 h-full w-[80%] max-w-sm overflow-y-auto bg-gradient-to-b from-primary to-primary-dark shadow-2xl lg:hidden"
+            className="fixed right-0 top-0 z-50 h-full w-[80%] max-w-sm overflow-y-auto bg-gradient-to-b from-navy to-navy-dark shadow-2xl lg:hidden"
           >
             <nav className="px-4 py-6">
               {/* Close button */}
