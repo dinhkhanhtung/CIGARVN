@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className="min-h-screen bg-porcelain">
+      <body className="min-h-screen bg-cream">
         <AgeVerification />
         <Header />
         <main>{children}</main>

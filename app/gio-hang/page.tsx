@@ -61,7 +61,7 @@ export default function CartPage() {
   const total = subtotal + shipping;
 
   return (
-    <div className="min-h-screen bg-porcelain">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
       <div className="bg-navy py-8">
         <div className="mx-auto max-w-7xl px-4">
@@ -111,7 +111,7 @@ export default function CartPage() {
                       className="flex gap-4 p-4"
                     >
                       {/* Image */}
-                      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-sm bg-porcelain">
+                      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-sm bg-cream">
                         <Image
                           src={item.image}
                           alt={item.name}

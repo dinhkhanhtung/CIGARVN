@@ -101,7 +101,7 @@ export default function ProductDetailPage() {
   const relatedProducts = products.filter((p) => p.id !== product.id).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-porcelain">
+    <div className="min-h-screen bg-cream">
       {/* Breadcrumb */}
       <div className="bg-white">
         <div className="mx-auto max-w-7xl px-4 py-3">
@@ -254,7 +254,7 @@ export default function ProductDetailPage() {
                 Thông số kỹ thuật
               </h2>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="flex items-center gap-3 rounded-sm bg-porcelain p-3">
+                <div className="flex items-center gap-3 rounded-sm bg-cream p-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy/10 text-navy">
                     <Leaf size={18} />
                   </div>
@@ -263,7 +263,7 @@ export default function ProductDetailPage() {
                     <div className="font-medium text-navy">{product.origin}</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 rounded-sm bg-porcelain p-3">
+                <div className="flex items-center gap-3 rounded-sm bg-cream p-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy/10 text-navy">
                     <Clock size={18} />
                   </div>
@@ -272,7 +272,7 @@ export default function ProductDetailPage() {
                     <div className="font-medium text-navy">{product.smokingTime}</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 rounded-sm bg-porcelain p-3">
+                <div className="flex items-center gap-3 rounded-sm bg-cream p-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy/10 text-navy">
                     <Flame size={18} />
                   </div>
@@ -283,7 +283,7 @@ export default function ProductDetailPage() {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 rounded-sm bg-porcelain p-3">
+                <div className="flex items-center gap-3 rounded-sm bg-cream p-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy/10 text-navy">
                     <Coffee size={18} />
                   </div>

@@ -229,7 +229,7 @@ export default function ProductsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-porcelain">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
       <div className="bg-navy py-8">
         <div className="mx-auto max-w-7xl px-4">
@@ -328,7 +328,7 @@ export default function ProductsPage() {
                         )}
 
                         {/* Image */}
-                        <div className="aspect-square relative overflow-hidden bg-porcelain">
+                        <div className="aspect-square relative overflow-hidden bg-cream">
                           <Image
                             src={product.image}
                             alt={product.name}

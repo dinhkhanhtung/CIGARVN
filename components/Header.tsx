@@ -298,7 +298,7 @@ export default function Header() {
                 </p>
                 <a
                   href="tel:0982581222"
-                  className="flex items-center gap-3 rounded-lg bg-gold px-4 py-3 text-center font-semibold text-primary transition-colors hover:bg-gold-light"
+                  className="flex items-center gap-3 rounded-lg bg-gold px-4 py-3 text-center font-semibold text-navy transition-colors hover:bg-gold-light"
                 >
                   <Phone size={18} />
                   <span>0982.581.222</span>

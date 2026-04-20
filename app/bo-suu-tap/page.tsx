@@ -54,7 +54,7 @@ function formatPrice(price: number): string {
 
 export default function CollectionsPage() {
   return (
-    <div className="min-h-screen bg-porcelain">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
       <div className="bg-navy py-12">
         <div className="mx-auto max-w-7xl px-4 text-center">

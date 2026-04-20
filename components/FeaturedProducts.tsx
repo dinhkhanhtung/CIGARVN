@@ -255,11 +255,11 @@ export default function FeaturedProducts() {
                         <div className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
                           {product.brand}
                         </div>
-                        <h3 className="mb-2 font-serif text-sm font-semibold text-primary transition-colors group-hover:text-accent">
+                        <h3 className="mb-2 font-serif text-sm font-semibold text-navy transition-colors group-hover:text-gold">
                           {product.name}
                         </h3>
                         <div className="flex items-center gap-2">
-                          <span className="font-serif text-sm font-bold text-primary">
+                          <span className="font-serif text-sm font-bold text-navy">
                             {formatPrice(product.price)}
                           </span>
                           {product.originalPrice && (

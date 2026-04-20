@@ -33,7 +33,7 @@ const categories = [
 
 export default function Categories() {
   return (
-    <section className="bg-porcelain py-16">
+    <section className="bg-cream py-16">
       <div className="mx-auto max-w-7xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
