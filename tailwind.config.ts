@@ -9,43 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Vintage Cigar Color Palette
-        primary: {
-          DEFAULT: '#4A3428', // Nâu sẫm vintage
-          light: '#6B4A3A',
-          dark: '#2C1E16',
-        },
-        accent: {
-          DEFAULT: '#C9A961', // Vàng đồng cổ điển
-          light: '#E8D4A8',
-          dark: '#A68B4B',
-        },
-        earth: {
-          DEFAULT: '#8B6914', // Nâu đất
-          light: '#A67C52',
-          dark: '#5C4510',
-        },
-        cream: '#FAF6F0', // Kem ấm
-        tobacco: '#D4C5B5', // Màu thuốc lá
-        'warm-gray': '#E8E2D9',
-        // Keep old aliases for compatibility
+        // JJ Fox Exact Colors
         navy: {
-          DEFAULT: '#4A3428',
-          light: '#6B4A3A',
-          dark: '#2C1E16',
+          DEFAULT: '#1a1a2e', // Deep navy blue
+          light: '#16213e',
+          dark: '#0f0f1a',
         },
         gold: {
-          DEFAULT: '#C9A961',
-          light: '#E8D4A8',
-          dark: '#A68B4B',
+          DEFAULT: '#c9a227', // Gold accent
+          light: '#d4af37',
+          dark: '#b8860b',
         },
-        porcelain: '#FAF6F0',
+        white: {
+          DEFAULT: '#ffffff',
+          off: '#f8f8f8',
+        },
+        gray: {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
+        },
+        // Vintage cigar colors
+        'cream': '#faf9f5',
+        'tobacco': '#d4c4b0',
+        'brown': '#8b7355',
       },
       fontFamily: {
-        // Fonts with excellent Vietnamese support
-        serif: ['Noto Serif', 'Georgia', 'serif'],
-        sans: ['Be Vietnam Pro', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'Noto Serif', 'serif'],
+        // JJ Fox Typography
+        serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
+        sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
       },
       borderRadius: {
         'sm': '8px',
