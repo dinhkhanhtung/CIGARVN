@@ -5,10 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+// Use local images from asset folder
 const slides = [
   {
     id: 1,
-    image: 'https://www.jjfox.co.uk/media/wysiwyg/cmspage/25-jjfox_new_arrivals_banner__v2.jpg',
+    image: '/images/25-jjfox_new_arrivals_banner__v2.jpg',
     title: 'New Arrivals',
     subtitle: 'Discover our latest collection',
     cta: 'Shop Now',
@@ -16,7 +17,7 @@ const slides = [
   },
   {
     id: 2,
-    image: 'https://www.jjfox.co.uk/media/wysiwyg/cmspage/25-jjfox_cigar_accessories_banner_2.jpg',
+    image: '/images/25-jjfox_cigar_accessories_banner_2.jpg',
     title: 'Premium Accessories',
     subtitle: 'Lighters, cutters, and humidors',
     cta: 'View Collection',
@@ -24,11 +25,11 @@ const slides = [
   },
   {
     id: 3,
-    image: 'https://www.jjfox.co.uk/media/wysiwyg/cmspage/jjfox_events_banner__v3.jpg',
+    image: '/images/jjfox_events_banner__v3.jpg',
     title: 'Sampling Lounge',
     subtitle: 'Experience luxury at our lounge',
     cta: 'Learn More',
-    href: '/sampling-lounge'
+    href: '/tin-tuc'
   }
 ];
 
@@ -56,7 +57,7 @@ export default function HeroBanner() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
+      <div className="relative h-[200px] xs:h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px]">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
