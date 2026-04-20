@@ -361,7 +361,7 @@ export default function ProductDetailClient({ productId }: ProductDetailClientPr
               {relatedProducts.map((related) => (
                 <Link
                   key={related.id}
-                  href={`/san-pham/${related.id}/`}
+                  href={`/san-pham/${related.id}`}
                   className="group block rounded-sm bg-white shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="aspect-square relative overflow-hidden">

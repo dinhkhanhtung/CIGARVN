@@ -318,7 +318,7 @@ export default function ProductsPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Link href={`/san-pham/${product.id}/`} className="group block">
+                    <Link href={`/san-pham/${product.id}`} className="group block">
                       <div className="relative overflow-hidden rounded-sm bg-white shadow-sm">
                         {/* Sale badge */}
                         {product.originalPrice && (
