@@ -135,7 +135,7 @@ export default function FeaturedProducts() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <Link href={`/san-pham/detail?id=${product.id}`} className="group block">
+              <Link href={`/san-pham/${product.id}/`} className="group block">
                 <div className="relative overflow-hidden rounded-sm bg-porcelain">
                   {/* Sale badge */}
                   {product.originalPrice && (

@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import {
   ChevronRight,
   Minus,
@@ -90,9 +89,12 @@ function formatPrice(price: number): string {
   }).format(price);
 }
 
-export default function ProductDetailClient() {
-  const searchParams = useSearchParams();
-  const id = searchParams.get('id') || '1';
+interface ProductDetailClientProps {
+  productId?: string;
+}
+
+export default function ProductDetailClient({ productId }: ProductDetailClientProps = {}) {
+  const id = productId || '1';
   const product = products.find((p) => p.id === id) || products[0];
   const relatedProducts = products.filter((p) => p.id !== product.id);
   
@@ -359,7 +361,7 @@ export default function ProductDetailClient() {
               {relatedProducts.map((related) => (
                 <Link
                   key={related.id}
-                  href={`/san-pham/detail?id=${related.id}`}
+                  href={`/san-pham/${related.id}/`}
                   className="group block rounded-sm bg-white shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="aspect-square relative overflow-hidden">
